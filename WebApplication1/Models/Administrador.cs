@@ -10,7 +10,7 @@
         public string Contrasena { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaModificacion { get; set; }
-        // Constructor
+        // Constructor por defecto
         public Administrador()
         {
             FechaCreacion = DateTime.Now;
