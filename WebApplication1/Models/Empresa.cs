@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
@@ -6,9 +7,24 @@ namespace WebApplication1.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Nombre { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string NombreEmpresa { get; set; }
+
+        [Required]
+        [StringLength(200)]
         public string Direccion { get; set; }
+
+        [Required]
+        [Phone]
+        [StringLength(15)]
+        [DataType(DataType.PhoneNumber)]
         public string Telefono { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [StringLength(50)]
         public string Correo { get; set; }
        
 
