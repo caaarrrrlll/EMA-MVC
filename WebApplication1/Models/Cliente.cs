@@ -12,9 +12,9 @@ namespace WebApplication1.Models
         public string ApellidoCompleto { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
-        public string Direccion { get; set; }
         [ForeignKey("Direccion")]
+        public string Direccion { get; set; }
         public string MetodoPago { get; set; }
-        [ForeignKey("MetodoPago")]
+        
     }
 }

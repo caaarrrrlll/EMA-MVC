@@ -14,9 +14,7 @@ namespace WebApplication1.Models
         public string Telefono { get; set; }
         public DateTime  datebirth { get; set; }
         public string Direccion { get; set; }
-        [ForeignKey("Direccion")]
         public string PuestoID { get; set; }
-        [ForeignKey("PuestoId")]
 
 
     }
