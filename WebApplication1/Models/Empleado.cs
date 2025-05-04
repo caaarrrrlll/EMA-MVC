@@ -31,13 +31,23 @@ namespace WebApplication1.Models
         [DataType(DataType.DateTime)]
         public DateTime  datebirth { get; set; }
 
-        [StringLength(200)]
-        public string Direccion { get; set; }
-
         [Required]
         [StringLength(200)]
-        public string PuestoID { get; set; }
+        public string Puesto { get; set; }
 
-        //AQUI IRIA APARTADO ADMINISTRADOR
+        [Required]
+        public string Cargo { get; set; }
+
+        //Este comando en teoria deberia mostrar la descripcion del cargo
+        public string GetDescripcionCargo() { 
+            return Cargo switch
+            {
+                "Tecnico" => "Tecnico de Soporte",
+                "Administrativo" => "Administrativo",
+                "Gerente" => "Gerente de Ventas",
+                _ => "Cargo no definido"
+            };
+        }
+
     }
 }
