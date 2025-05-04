@@ -23,7 +23,6 @@ namespace WebApplication1.Models
 
         [Required]
         [Phone]
-        [DataType(DataType.PhoneNumber)]
         [StringLength(15)]
         public string Telefono { get; set; }
 
@@ -38,7 +37,7 @@ namespace WebApplication1.Models
         [Required]
         public string Cargo { get; set; }
 
-        //Este comando en teoria deberia mostrar la descripcion del cargo
+        /*Este comando en teoria deberia mostrar la descripcion del cargo
         public string GetDescripcionCargo() { 
             return Cargo switch
             {
@@ -48,6 +47,7 @@ namespace WebApplication1.Models
                 _ => "Cargo no definido"
             };
         }
+        */
 
     }
 }

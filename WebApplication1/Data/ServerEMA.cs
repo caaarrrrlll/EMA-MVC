@@ -15,4 +15,6 @@ using WebApplication1.Models;
         public DbSet<WebApplication1.Models.OrdenTrabajo> OrdenTrabajo { get; set; } = default!;
 
 public DbSet<WebApplication1.Models.Pagos> Pagos { get; set; } = default!;
+
+public DbSet<WebApplication1.Models.Empleado> Empleado { get; set; } = default!;
     }
