@@ -9,22 +9,22 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class ClientesController : Controller
     {
         private readonly ServerEMA _context;
 
-        public EmpleadoesController(ServerEMA context)
+        public ClientesController(ServerEMA context)
         {
             _context = context;
         }
 
-        // GET: Empleadoes
+        // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Empleado.ToListAsync());
+            return View(await _context.Cliente.ToListAsync());
         }
 
-        // GET: Empleadoes/Details/5
+        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado
+            var cliente = await _context.Cliente
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (empleado == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(empleado);
+            return View(cliente);
         }
 
-        // GET: Empleadoes/Create
+        // GET: Clientes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleadoes/Create
+        // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreCompleto,ApellidoCompleto,Correo,Telefono,datebirth,Puesto,Cargo")] Empleados empleado)
+        public async Task<IActionResult> Create([Bind("Id,NombreCompleto,ApellidoCompleto,Correo,Telefono,Direccion,MetodoPago")] Clientes cliente)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(empleado);
+                _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(empleado);
+            return View(cliente);
         }
 
-        // GET: Empleadoes/Edit/5
+        // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado.FindAsync(id);
-            if (empleado == null)
+            var cliente = await _context.Cliente.FindAsync(id);
+            if (cliente == null)
             {
                 return NotFound();
             }
-            return View(empleado);
+            return View(cliente);
         }
 
-        // POST: Empleadoes/Edit/5
+        // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreCompleto,ApellidoCompleto,Correo,Telefono,datebirth,Puesto,Cargo")] Empleados empleado)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreCompleto,ApellidoCompleto,Correo,Telefono,Direccion,MetodoPago")] Clientes cliente)
         {
-            if (id != empleado.Id)
+            if (id != cliente.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace WebApplication1.Controllers
             {
                 try
                 {
-                    _context.Update(empleado);
+                    _context.Update(cliente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmpleadoExists(empleado.Id))
+                    if (!ClienteExists(cliente.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace WebApplication1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(empleado);
+            return View(cliente);
         }
 
-        // GET: Empleadoes/Delete/5
+        // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,34 +123,34 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado
+            var cliente = await _context.Cliente
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (empleado == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(empleado);
+            return View(cliente);
         }
 
-        // POST: Empleadoes/Delete/5
+        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var empleado = await _context.Empleado.FindAsync(id);
-            if (empleado != null)
+            var cliente = await _context.Cliente.FindAsync(id);
+            if (cliente != null)
             {
-                _context.Empleado.Remove(empleado);
+                _context.Cliente.Remove(cliente);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmpleadoExists(int id)
+        private bool ClienteExists(int id)
         {
-            return _context.Empleado.Any(e => e.Id == id);
+            return _context.Cliente.Any(e => e.Id == id);
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace WebApplication1.Models
 {
-    public class Cliente
+    public class Clientes
     {
         [Key]
         public int Id { get; set; }
